@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="Scripts/moment.js"></script>
+<script src="Scripts/DateRanger.js"></script>
+
+<script type="text/javascript">
+
+    //var drs = new DateRanger(2012, 2020); Future dates will only validate to current year
+    var drs = new DateRanger();
+    var cdv = {};
+
+
+    function changeslider(triggerevent, ui) {
+        var edateIndex = cdv.eIndex;
+        var sdateIndex = cdv.sIndex;
+
+        $("#dateSlider").slider("option", "max", cdv.eIndex);
+
+
+        if (ui != undefined) {
+            //values are from slider
+            sdateIndex = ui.values[0];
+            edateIndex = ui.values[1];
+
+        }
+        else {
+            //set the option on load
+            $("#dateSlider").slider("option", "values", [sdateIndex, edateIndex]);
+        }
+
+
+
+        $("#startlbl").text(cdv.display(sdateIndex));
+        $("#endlbl").text(cdv.display(edateIndex));
+
+
+        $("#startlblday").text(cdv.fullStartDate(sdateIndex));
+        $("#endlblday").text(cdv.fullEndDate(edateIndex));
+
+    };
+
+    function changeBasis() {
+        cdv = drs.setCurrentDateView($('#ddlBasis').find(":selected").val()); //control sets view
+        changeslider();
+    }
+
+    $(function () {
+
+        cdv = drs.setCurrentDateView('Month'); //control sets view
+
+        $("#dateSlider").slider({
+            range: true,
+            max: cdv.eIndex, 
+            slide: function (event, ui) { changeslider(event, ui) }
+        });
+
+
+        changeslider();
+
+    })
+
+
+</script>
+
+<html>
+    <body>
+        <div>
+            <h1>Demo of Date Slider Functionality</h1>
+            <div style="width:450px"><div id="dateSlider"></div></div>
+            <div>
+                <label id="startlbl">Start</label>
+                <label id="endlbl">End</label>
+            </div>
+            <div>
+                <label id="startlblday">Start with day</label>
+                <label id="endlblday">End with day</label>
+            </div>
+            <div>
+                <select id="ddlBasis" onchange="changeBasis()">
+                    <option value="Month">Month</option>
+                    <option value="Quarter">Quarter</option>
+                    <option value="Year">Year</option>
+                </select>
+            </div>
+
+        </div>
+    </body>
+</html>
