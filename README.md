@@ -36,3 +36,12 @@ The control has three modes:
 2. The formatted display dates would be 1/1/2015 through 7/31/2018
 3. Forty-three possible selections.
 Here is a sample image of what the control will display for an end user.
+
+# Moment.JS should no longer be used.
+As written I used Moment.JS which has been changed to maintenance mode, It can still be downloaded and used 
+
+# Using the Code
+To use the DateSlider object, include the js file into the HTML file, ensuring that you include
+the jQuery and moment.js.
+
+
