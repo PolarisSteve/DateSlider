@@ -15,3 +15,24 @@ JavaScript. Now the end user can select proper dates which are constrained by th
 https://www.codeproject.com/articles/Getting-It-Right-for-Your-Customers 1/9
 defined above and the pages have now become usable. Most importantly, the customer was
 pleased with the final product.
+
+# Background
+In all cases, the slider can slide to the first day of the selected range and the last day of the
+range selected.
+Given the date August 3, 2018 and the year range set from 2015 through 2018, the following
+would be selectable by the control.
+Depending on mode, the granularity of the control changes.
+The control has three modes:
+1. Display by years
+1. The selectable dates would be January 1, 2015 through December 31, 2017
+2. The formatted display dates would be 2015 through 2017
+3. Three possible selections
+2. Display by quarters
+1. The selectable dates would be January 1, 2015 through June 30, 2018
+2. The formatted display dates would be 2015/Q1 through 2018/Q2
+3. Fourteen possible selections
+3. Display by months
+1. The selectable dates would be January 1, 2015 through July 31, 2018
+2. The formatted display dates would be 1/1/2015 through 7/31/2018
+3. Forty-three possible selections.
+Here is a sample image of what the control will display for an end user.
